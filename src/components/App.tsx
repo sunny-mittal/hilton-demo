@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import React from 'react'
+import { ApolloProvider } from 'react-apollo'
 
-export default class App extends Component {
-  public render() {
-    return (
-      <View>
-        <Text>Hilton Demo App</Text>
-      </View>
-    )
-  }
-}
+import client from '../client'
+import Home from './Home'
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <Home />
+  </ApolloProvider>
+)
+
+export default App

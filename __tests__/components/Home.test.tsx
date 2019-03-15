@@ -37,6 +37,8 @@ describe('Home', () => {
     )
 
     expect(wrapper.text()).toContain('Hilton Demo App')
-    setTimeout(done, 1000)
+
+    // Timeout is necessary to ensure the mock data has rendered
+    setTimeout(done, 100)
   })
 })

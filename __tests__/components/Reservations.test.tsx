@@ -37,10 +37,13 @@ describe('Reservations', () => {
       </MockedProvider>
     )
 
+    // Ensure the loading text is rendered immediately
     expect(wrapper.text()).toContain('Loading reservations')
+
+    // Verify the mock data is rendered after some amount of time
     setTimeout(() => {
       expect(wrapper.text()).toContain('Michael Bluth')
       done()
-    }, 1000)
+    }, 100)
   })
 })

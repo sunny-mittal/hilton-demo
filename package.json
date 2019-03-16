@@ -4,15 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest ./__tests__/components/*"
+    "test": "jest ./__tests__/components/*",
+    "ts:lint": "tslint -p ./",
+    "ts:check": "tsc"
   },
   "dependencies": {
+    "@types/graphql": "^14.0.7",
     "apollo-boost": "^0.3.1",
     "graphql": "^14.1.1",
+    "moment": "^2.24.0",
     "react": "16.8.3",
     "react-apollo": "^2.5.2",
     "react-native": "0.59.1",
     "react-native-elements": "^1.1.0",
+    "react-native-navigation": "^2.15.0",
     "react-native-vector-icons": "^6.4.1"
   },
   "devDependencies": {

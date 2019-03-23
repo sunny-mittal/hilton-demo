@@ -3,7 +3,7 @@ import Home from './src/components/HomeWrapper'
 
 Navigation.registerComponent('MainApp', () => Home)
 
-import registerScreens from './src/screens'
+import registerScreens from './src/navigations/screens'
 import defaultOptions from './src/navigation/config'
 
 registerScreens()

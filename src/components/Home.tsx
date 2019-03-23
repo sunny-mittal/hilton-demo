@@ -13,7 +13,7 @@ export const Home: React.SFC = () => (
         text: 'Upcoming Reservations'
       }}
     />
-    <Reservations />
+    <Reservations data={{}} />
   </View>
 )
 

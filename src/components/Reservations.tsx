@@ -1,20 +1,19 @@
 import React, { PureComponent } from 'react'
-import { Query } from 'react-apollo'
-import { ScrollView, Text, View } from 'react-native'
+import { ChildProps, graphql, Query } from 'react-apollo'
+import { RefreshControl, ScrollView, Text, View } from 'react-native'
 
 import { GET_RESERVATIONS } from '../graphql/queries'
 import styles from '../styles'
 import Reservation from './Reservation'
 
-interface IReservation {
-  id: string
-  hotelName: string
-  name: string
-  arrivalDate: string
-  departureDate: string
-}
+import { IApolloGQLProps, IRefreshState, NReservations } from '../types'
 
-export default class Reservations extends PureComponent {
+class Reservations extends PureComponent<IApolloGQLProps, IRefreshState> {
+  constructor(props: IApolloGQLProps) {
+    super(props)
+    this.state = { refreshing: false }
+  }
+
   public render() {
     return (
       <Query query={GET_RESERVATIONS}>
@@ -36,15 +35,22 @@ export default class Reservations extends PureComponent {
           }
 
           return (
-            <ScrollView>
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.props.data.refetch}
+                />
+              }
+            >
               {data.reservations
                 .sort(
                   (
-                    { arrivalDate: a }: IReservation,
-                    { arrivalDate: b }: IReservation
+                    { arrivalDate: a }: NReservations.IReservation,
+                    { arrivalDate: b }: NReservations.IReservation
                   ) => (Date.parse(a) < Date.parse(b) ? 1 : -1)
                 )
-                .map((reservation: IReservation) => (
+                .map((reservation: NReservations.IReservation) => (
                   <Reservation key={reservation.id} {...reservation} />
                 ))}
             </ScrollView>
@@ -54,3 +60,6 @@ export default class Reservations extends PureComponent {
     )
   }
 }
+
+const withReservations = graphql<IApolloGQLProps>(GET_RESERVATIONS)
+export default withReservations(Reservations)

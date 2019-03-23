@@ -8,7 +8,7 @@ import { NReservations } from '../types'
 const formatDate: (date: string) => string = date =>
   moment(Date.parse(date)).format('MMM D YYYY')
 
-const Reservation: React.SFC<NReservations.IProps> = ({
+const Reservation: React.SFC<NReservations.IReservationProps> = ({
   name,
   hotelName,
   arrivalDate,

@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
-import App from './src/components/App'
+import Home from './src/components/HomeWrapper'
 
-Navigation.registerComponent('MainApp', () => App)
+Navigation.registerComponent('MainApp', () => Home)
 
 import registerScreens from './src/screens'
 import defaultOptions from './src/navigation/config'

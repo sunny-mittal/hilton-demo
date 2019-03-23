@@ -64,10 +64,10 @@ const ReservationForm = ({
 )
 
 export default class CreateReservationForm extends PureComponent<
-  NCreateReservation.IProps,
-  NCreateReservation.IState
+  NCreateReservation.IFormProps,
+  NCreateReservation.IFormState
 > {
-  constructor(props: NCreateReservation.IProps) {
+  constructor(props: NCreateReservation.IFormProps) {
     super(props)
     this.makeReservation = this.makeReservation.bind(this)
   }

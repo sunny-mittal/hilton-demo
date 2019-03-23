@@ -1,9 +1,9 @@
 export namespace NCreateReservation {
-  export interface IProps {
+  export interface IFormProps {
     onSubmit: (data: any) => void
   }
 
-  export interface IState {
+  export interface IFormState {
     name: string
     hotelName: string
     arrivalDate: string
@@ -12,10 +12,25 @@ export namespace NCreateReservation {
 }
 
 export namespace NReservations {
-  export interface IProps {
+  export interface IReservationProps {
     name: string
     hotelName: string
     arrivalDate: string
     departureDate: string
   }
+
+  export interface IReservation {
+    id: string
+    hotelName: string
+    name: string
+    arrivalDate: string
+    departureDate: string
+  }
+}
+
+export interface IApolloGQLProps {
+  data: any
+}
+export interface IRefreshState {
+  refreshing: boolean
 }

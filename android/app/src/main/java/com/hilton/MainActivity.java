@@ -1,6 +1,6 @@
 package com.hilton;
 
-import com.facebook.react.ReactActivity;
+import com.reactnativenavigation.NavigationActivity;
 
 public class MainActivity extends ReactActivity {
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Hilton";
+        return "Home";
     }
 }

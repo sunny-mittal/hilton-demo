@@ -3,17 +3,12 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Card } from 'react-native-elements'
 
+import { NReservations } from '../types'
+
 const formatDate: (date: string) => string = date =>
-  moment(date).format('MMM D YYYY')
+  moment(Date.parse(date)).format('MMM D YYYY')
 
-interface Props {
-  name: string
-  hotelName: string
-  arrivalDate: string
-  departureDate: string
-}
-
-const Reservation: React.SFC<Props> = ({
+const Reservation: React.SFC<NReservations.IProps> = ({
   name,
   hotelName,
   arrivalDate,

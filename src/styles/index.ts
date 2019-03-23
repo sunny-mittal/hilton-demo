@@ -1,9 +1,14 @@
 import { StyleSheet } from 'react-native'
 
-const shared = StyleSheet.create({
+export default StyleSheet.create({
+  button: {
+    left: '70%',
+    top: 20,
+    width: '25%'
+  },
   center: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center'
   },
   container: {
@@ -12,9 +17,9 @@ const shared = StyleSheet.create({
   header: {
     color: '#fff',
     fontSize: 20
+  },
+  input: {
+    height: 40,
+    width: '100%'
   }
 })
-
-export default {
-  shared
-}

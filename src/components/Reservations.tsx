@@ -1,12 +1,12 @@
-import gql from 'graphql-tag'
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { Query } from 'react-apollo'
 import { ScrollView, Text, View } from 'react-native'
 
-import Reservation from '../../src/components/Reservation'
+import { GET_RESERVATIONS } from '../graphql/queries'
 import styles from '../styles'
+import Reservation from './Reservation'
 
-interface Reservation {
+interface IReservation {
   id: string
   hotelName: string
   name: string
@@ -14,58 +14,43 @@ interface Reservation {
   departureDate: string
 }
 
-interface Data {
-  reservations: Reservation[]
-}
-
-interface Props {
-  loading?: any
-  error?: any
-  data: Data
-}
-
-export const GET_RESERVATIONS_QUERY = gql`
-  {
-    reservations {
-      id
-      hotelName
-      name
-      arrivalDate
-      departureDate
-    }
-  }
-`
-
-const renderReservations: React.SFC<Props> = ({ loading, error, data }) => {
-  if (loading) {
+export default class Reservations extends PureComponent {
+  public render() {
     return (
-      <View style={styles.shared.center}>
-        <Text>Loading reservations</Text>
-      </View>
+      <Query query={GET_RESERVATIONS}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return (
+              <View style={styles.center}>
+                <Text>Loading reservations</Text>
+              </View>
+            )
+          }
+
+          if (error) {
+            return (
+              <View style={styles.center}>
+                <Text>An error occurred</Text>
+              </View>
+            )
+          }
+
+          return (
+            <ScrollView>
+              {data.reservations
+                .sort(
+                  (
+                    { arrivalDate: a }: IReservation,
+                    { arrivalDate: b }: IReservation
+                  ) => (Date.parse(a) < Date.parse(b) ? 1 : -1)
+                )
+                .map((reservation: IReservation) => (
+                  <Reservation key={reservation.id} {...reservation} />
+                ))}
+            </ScrollView>
+          )
+        }}
+      </Query>
     )
   }
-
-  if (error) {
-    return (
-      <View style={styles.shared.center}>
-        <Text>An error occurred</Text>
-      </View>
-    )
-  }
-
-  return (
-    <ScrollView>
-      {data.reservations
-        .sort(({ arrivalDate: a }, { arrivalDate: b }) =>
-          Date.parse(a) < Date.parse(b) ? -1 : 1
-        )
-        .map(reservation => {
-          return <Reservation key={reservation.id} {...reservation} />
-        })}
-    </ScrollView>
-  )
 }
-
-export const Reservations: () => (
-  <Query query={GET_RESERVATIONS_QUERY}>{renderReservations}</Query>
-)

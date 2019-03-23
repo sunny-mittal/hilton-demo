@@ -1,13 +1,13 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
-
 import client from '../client'
+
 import Home from './Home'
 
-const App: React.SFC = () => (
+const HomeWrapper = () => (
   <ApolloProvider client={client}>
     <Home />
   </ApolloProvider>
 )
 
-export default App
+export default HomeWrapper

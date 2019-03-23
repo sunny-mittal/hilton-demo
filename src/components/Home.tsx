@@ -3,13 +3,13 @@ import { View } from 'react-native'
 import { Header } from 'react-native-elements'
 
 import styles from '../styles'
-import { Reservations } from './Reservations'
+import Reservations from './Reservations'
 
-const Home = () => (
-  <View style={styles.shared.container}>
+export const Home: React.SFC = () => (
+  <View style={styles.container}>
     <Header
       centerComponent={{
-        style: styles.shared.header,
+        style: styles.header,
         text: 'Upcoming Reservations'
       }}
     />

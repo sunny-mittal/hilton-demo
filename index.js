@@ -1,7 +1,4 @@
 import { Navigation } from 'react-native-navigation'
-import Home from './src/components/HomeWrapper'
-
-Navigation.registerComponent('MainApp', () => Home)
 
 import registerScreens from './src/navigation/screens'
 import defaultOptions from './src/navigation/config'
@@ -14,7 +11,6 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       bottomTabs: {
-        backgroundColor: '#000',
         children: [
           {
             component: {

@@ -21,6 +21,8 @@ $ npm run start # start metro bundler
 $ react-native run-ios # or react-native run-android
 ```
 
+NOTE: To run the app on a physical device, make sure the device is connected to the same network as the machine running the metro bundler.
+
 ## Architectural decisions
 
 ### Directory structure

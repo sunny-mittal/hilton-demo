@@ -18,7 +18,7 @@ $ npm run test # run unit tests
 $ npm run ts:lint # lint ts files
 $ npm run ts:check # check typings
 $ npm run start # start metro bundler
-$ react-native run-ios
+$ react-native run-ios # or react-native run-android
 ```
 
 ## Architectural decisions

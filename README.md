@@ -1,4 +1,4 @@
-# Hilton Demo App
+# Reservation App
 
 This is a demo react-native app used to communicate with a GraphQL API for hotel reservations.
 
@@ -40,3 +40,15 @@ Finally, at the top level of the `src` directory resides the typings file, as th
 I chose to use [React Native Elements](https://github.com/react-native-training/react-native-elements) for some basic components (header, reservation card) to ensure cross-platform consistency.
 I used [Formik](https://github.com/jaredpalmer/formik) along with [yup](https://github.com/jquense/yup) for handling the form for creating a new reservation. `Formik` makes it extremely simple to validate and submit forms, while `yup` has a very sensible approach for creating the validation schema passed to formik.
 Finally, I used [Moment](https://github.com/moment/moment) for parsing the dates passed back from the GraphQL endpoint as I have no control over the integrity of the data passed back and `moment` normalizes the various ISO formats that may be used on the backend.
+
+### Misc
+
+I employed a simple pull-to-refresh to handle updating the upcoming reservations page as this provided the easiest way to get latest reservations without relaunching the app, which would be terrible UX.
+
+## If time permitted...
+
+If I had more time, I would add the following features (along with better design, which I wasn't as focused on for this project):
+
+- GraphQL subscriptions to handle fetching new data in real-time
+- Search and filter ability for only getting those reservations that interest us
+- Ability to modify the reservations (though this wouldn't make sense for the average user...perhaps for a special moderator/administrator role)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ApolloProvider, Mutation } from 'react-apollo'
 
-import client from '../client'
+import client from '../graphql/client'
 import { CREATE_RESERVATION } from '../graphql/mutations'
 import CreateReservationForm from './CreateReservationForm'
 

@@ -3,15 +3,13 @@ import React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import 'react-native'
 
-import {
-  GET_RESERVATIONS_QUERY,
-  Reservations
-} from '../../src/components/Reservations'
+import Reservations from '../../src/components/Reservations'
+import { GET_RESERVATIONS } from '../../src/graphql/queries'
 
 const mockReservations = [
   {
     request: {
-      query: GET_RESERVATIONS_QUERY
+      query: GET_RESERVATIONS
     },
     result: {
       data: {
@@ -29,6 +27,8 @@ const mockReservations = [
   }
 ]
 
+// jest.useFakeTimers()
+
 describe('Reservations', () => {
   it('renders a list of reservations', async done => {
     const wrapper = await mount(
@@ -40,9 +40,9 @@ describe('Reservations', () => {
     // Ensure the loading text is rendered immediately
     expect(wrapper.text()).toContain('Loading reservations')
 
-    // Verify the mock data is rendered after some amount of time
+    // Verify the mock data is rendered after some time
     setTimeout(() => {
-      expect(wrapper.text()).toContain('Michael Bluth')
+      expect(wrapper.text()).toContain('Sitwell Inn')
       done()
     }, 100)
   })

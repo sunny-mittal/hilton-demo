@@ -3,12 +3,12 @@ import React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import 'react-native'
 
-import { GET_RESERVATIONS_QUERY } from '../../src/components/Reservations'
+import { GET_RESERVATIONS } from '../../src/graphql/queries'
 
 const mockReservations = [
   {
     request: {
-      query: GET_RESERVATIONS_QUERY
+      query: GET_RESERVATIONS
     },
     result: {
       data: {
@@ -36,9 +36,12 @@ describe('Home', () => {
       </MockedProvider>
     )
 
-    expect(wrapper.text()).toContain('Hilton Demo App')
+    expect(wrapper.text()).toContain('Upcoming Reservations')
 
-    // Timeout is necessary to ensure the mock data has rendered
-    setTimeout(done, 100)
+    // Ensure mock data has time to render
+    setInterval(() => {
+      expect(wrapper.text()).toContain('Sitwell Inn')
+      done()
+    }, 100)
   })
 })

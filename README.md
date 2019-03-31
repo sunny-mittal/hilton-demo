@@ -18,10 +18,12 @@ $ npm run test # run unit tests
 $ npm run ts:lint # lint ts files
 $ npm run ts:check # check typings
 $ npm run start # start metro bundler
-$ react-native run-ios # or react-native run-android
+$ npm run ios # or npm run android
 ```
 
 NOTE: To run the app on a physical device, make sure the device is connected to the same network as the machine running the metro bundler.
+
+NOTE ABOUT ANDROID: Running new React Native apps is a known pain point for developers and your mileage may vary with getting it to work nicely with your machine's environment. I was able to run it successfully about 20% of the time.
 
 ## Architectural decisions
 
